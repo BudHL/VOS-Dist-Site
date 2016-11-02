@@ -87,9 +87,9 @@ namespace VOS_Dist_Site
             return manager;
         }
 
-        public virtual async Task<IdentityResult> RemoveUserFromRolesAsync(string userId, IList<string> roles)
+        public virtual async Task<IdentityResult> AddUserToRolesAsync(string userId, IList<string> roles)
         {
-            var userRoleStore -(IUserRoleStore<ApplicationUser, string>)Store;
+            var userRoleStore = (IUserRoleStore<ApplicationUser, string>)Store;
 
             var user = await FindByIdAsync(userId).ConfigureAwait(false);
             if (user == null)
@@ -97,18 +97,39 @@ namespace VOS_Dist_Site
                 throw new InvalidOperationException("Invalid user Id");
             }
 
-            var userRoles = await userRolesStore.getRolesAsync(user).ConfigureAwait(false);
-            //Remove user to each role using UserRoleStore
-            foreach (var role in roles.Where(userRoles.Contains))
+            var userRoles = await userRoleStore.GetRolesAsync(user).ConfigureAwait(false);
+            // Add user to each role using UserRoleStore
+            foreach (var role in roles.Where(role => !userRoles.Contains(role)))
             {
-                await userRoleStore.RemoveFromRoleAsync(user, role).CongfigureAwait(false);
+                await userRoleStore.AddToRoleAsync(user, role).ConfigureAwait(false);
             }
 
-            //Call update once when all roles are removed
+            // Call update once when all roles are added
+            return await UpdateAsync(user).ConfigureAwait(false);
+        }
+
+        public virtual async Task<IdentityResult> RemoveUserFromRolesAsync(string userId, IList<string> roles)
+        {
+            var userRoleStore = (IUserRoleStore<ApplicationUser, string>)Store;
+
+            var user = await FindByIdAsync(userId).ConfigureAwait(false);
+            if (user == null)
+            {
+                throw new InvalidOperationException("Invalid user Id");
+            }
+
+            var userRoles = await userRoleStore.GetRolesAsync(user).ConfigureAwait(false);
+            // Remove user to each role using UserRoleStore
+            foreach (var role in roles.Where(userRoles.Contains))
+            {
+                await userRoleStore.RemoveFromRoleAsync(user, role).ConfigureAwait(false);
+            }
+
+            // Call update once when all roles are removed
             return await UpdateAsync(user).ConfigureAwait(false);
         }
     }
-
+    //Configure the RoleManager used in the application. RoleManager is defined in the ASP.NET identity core assembly
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {
         public ApplicationRoleManager(IRoleStore<IdentityRole,string> roleStore) : base(roleStore)
@@ -140,6 +161,65 @@ namespace VOS_Dist_Site
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    //This section here allows you to create a new database if the Model changes
+    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext context)
+        {
+            InitializeIdentityForEF(context);
+            base.Seed(context);
+        }
+
+        private static IdentityRole ReturnNull()
+        {
+            return null;
+        }
+
+        //Create User=Admin@Admin.com with password=Admin@123456 in the Admin role
+        public static void InitializeIdentityForEF(ApplicationDbContext db)
+        {
+            var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
+            const string name = "admin@gmail.com";
+            const string guestName = "guest@guest.com";
+            const string password = "abc123";
+            const string guestPass = "guest1";
+            const string roleName = "Admin";
+
+            //Creates Admin Role if it does not exists already
+            var role = roleManager.FindByName(name);
+            if(role == null)
+            {
+                role = new IdentityRole(roleName);
+                var roleResult = roleManager.Create(role);
+            }
+
+            var adminUser = userManager.FindByName(name);
+            if (adminUser == null)
+            {
+                adminUser = new ApplicationUser { UserName = name, Email = name };
+                var result = userManager.Create(adminUser, password);
+                result = userManager.SetLockoutEnabled(adminUser.Id, false);
+            }
+
+            //Guest user setup
+            var guestUser = userManager.FindByName(guestName);
+            if (guestUser == null)
+            {
+                guestUser = new ApplicationUser { UserName = guestName, Email = guestName };
+                var result = userManager.Create(guestUser, guestPass);
+                result = userManager.SetLockoutEnabled(guestUser.Id, false);
+            }
+
+            //Adds the admin user to the Admin Role if not done already
+            var rolesForUser = userManager.GetRoles(adminUser.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                var result = userManager.AddToRole(adminUser.Id, role.Name);
+            }
         }
     }
 }
