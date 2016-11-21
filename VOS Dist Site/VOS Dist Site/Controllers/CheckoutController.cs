@@ -124,7 +124,7 @@ namespace VOS_Dist_Site.Controllers
             RestClient client = new RestClient();
             //fix this we have this up top too
             AppConfigurations appConfig = new AppConfigurations();
-            client.BaseUrl = "https://api.mailgun.net/v2";
+            //client.BaseUrl = "https://api.mailgun.net/v2";
             client.Authenticator =
                    new HttpBasicAuthenticator("api",
                                               appConfig.EmailApiKey);

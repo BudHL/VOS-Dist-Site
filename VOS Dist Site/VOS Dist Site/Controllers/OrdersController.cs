@@ -9,6 +9,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VOS_Dist_Site.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace VOS_Dist_Site.Controllers
 {

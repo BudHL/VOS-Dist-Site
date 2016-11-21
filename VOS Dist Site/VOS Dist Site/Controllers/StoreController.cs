@@ -15,9 +15,9 @@ namespace VOS_Dist_Site.Controllers
 
         public ActionResult Index()
         {
-            var catagories = storeDB.Categories.ToList();
+            var catagories = storeDB.Catagories.ToList();
 
-            return View(categories);
+            return View(catagories);
         }
 
         //GET: /Store/Browse?
@@ -25,7 +25,7 @@ namespace VOS_Dist_Site.Controllers
         public ActionResult Browse(string catagorie)
         {
             //Retrieves a product and associated items from DB
-            var catagorieModel = storeDB.Catagoreies.Include("Items").Single(global => global.Name == catagorie);
+            var catagorieModel = storeDB.Catagories.Include("Items").Single(global => global.Name == catagorie);
 
             return View(catagorieModel);
         }

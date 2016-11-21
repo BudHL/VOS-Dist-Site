@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Entity;
 using VOS_Dist_Site.Models;
+using PagedList.Mvc;
+using PagedList;
+
 
 
 namespace VOS_Dist_Site.Controllers

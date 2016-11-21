@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using VOS_Dist_Site.ViewModels;
 
 namespace VOS_Dist_Site.Models
 {
@@ -11,7 +12,7 @@ namespace VOS_Dist_Site.Models
         {
             public List<OrderDateGroup> OrderData { get; set; }
 
-            public List<OrderDateGroup> OrderDataForToday { get; set}
+            public List<OrderDateGroup> OrderDataForToday { get; set; }
         }
     }
 }
