@@ -52,5 +52,7 @@ namespace VOS_Dist_Site.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<VOS_Dist_Site.Models.RoleViewModel> RoleViewModels { get; set; }
     }
 }

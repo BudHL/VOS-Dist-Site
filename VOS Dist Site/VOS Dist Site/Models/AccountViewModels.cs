@@ -3,6 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VOS_Dist_Site.Models
 {
+
+    public class GuestViewModel
+    {
+        [Required]
+        [Display(Name = "Email")]
+        public string GuestAcct { get; set; }
+
+        [Required]
+        [Display(Name = "Password")]
+        public string GuestPassword { get; set; }
+
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

@@ -9,7 +9,6 @@ using System.Net;
 using System.Web.Mvc;
 using VOS_Dist_Site.Models;
 using VOS_Dist_Site.ViewModels;
-using static VOS_Dist_Site.Models.Analytics;
 
 namespace VOS_Dist_Site.Controllers
 {
