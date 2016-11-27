@@ -236,6 +236,18 @@
     <Compile Include="Migrations\201611251746534_AnalyticsFix.Designer.cs">
       <DependentUpon>201611251746534_AnalyticsFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611272315486_fix1.cs" />
+    <Compile Include="Migrations\201611272315486_fix1.Designer.cs">
+      <DependentUpon>201611272315486_fix1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611272322229_fix3.cs" />
+    <Compile Include="Migrations\201611272322229_fix3.Designer.cs">
+      <DependentUpon>201611272322229_fix3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611272333333_migrationconfigUpdate.cs" />
+    <Compile Include="Migrations\201611272333333_migrationconfigUpdate.Designer.cs">
+      <DependentUpon>201611272333333_migrationconfigUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -394,6 +406,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611251746534_AnalyticsFix.resx">
       <DependentUpon>201611251746534_AnalyticsFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611272315486_fix1.resx">
+      <DependentUpon>201611272315486_fix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611272322229_fix3.resx">
+      <DependentUpon>201611272322229_fix3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611272333333_migrationconfigUpdate.resx">
+      <DependentUpon>201611272333333_migrationconfigUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
