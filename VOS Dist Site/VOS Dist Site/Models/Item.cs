@@ -19,14 +19,21 @@ namespace VOS_Dist_Site.Models
         [ScaffoldColumn(false)]
         public int ID { get; set; }
 
-        [DisplayName("Catagorie")]
+        [DisplayName("Category")]
         public int CatagorieId { get; set; }
 
         [Required(ErrorMessage = "An Item Name is required")]
         [StringLength(160)]
+        [DisplayName("Product Name")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "An amount is required, even 0")]
+        [DisplayName("Amount in Stock")]
+        public int quantity { get; set; }
 
+        [Required(ErrorMessage = "A nicotine amount is required")]
+        [DisplayName("Nicotine Percentage")]
+        public double nicPercent { get; set; }
 
         [Required(ErrorMessage = "Price is required")]
         [Range(0.01, 999.99,ErrorMessage = "Price must be between 0.01 and 999.99")]

@@ -1,6 +1,6 @@
 ﻿@model VOS_Dist_Site.Models.Item
 @{
-    ViewBag.Title = "Item - " + Model.Name;
+    ViewBag.Title = Model.Name;
 }
 
 <h2>@Model.Name</h2>
@@ -11,7 +11,7 @@
 
 <div id="item-details">
     <p>
-        <em>Genre:</em>
+        <em>Catagory:</em>
         @Model.Catagorie.Name
     </p>
     <p>

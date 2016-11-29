@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<VOS_Dist_Site.Models.Item>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Prodcut Index";
 }
 
-<h2>Index</h2>
+<h2>Product Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Product", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Catagorie.Name)
@@ -21,7 +21,10 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InternalImage)
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nicPercent)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ItemPictureUrl)
@@ -41,7 +44,10 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.InternalImage)
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nicPercent)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ItemPictureUrl)
