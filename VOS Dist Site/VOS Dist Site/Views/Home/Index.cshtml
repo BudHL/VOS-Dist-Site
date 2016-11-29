@@ -1,30 +1,60 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "VOS Distributions - Home";
 }
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h1>VOS Distributions</h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="img-responsive center-block" src="~/Content/vap1.jpeg" alt="Vape Product 1"/>
+                </div>
 
-<div class="jumbotron">
-    <h1>VOS Distributions</h1>
-    <p class="lead">VOS is a Vape E-Liquid wholesale distributor based out of Northern Virginia</p>
+                <div class="item">
+                    <img class="img-responsive center-block" src="~/Content/vap2.jpeg" alt="Vape Product 2" />
+                </div>
+
+                <div class="item">
+                    <img class="img-responsive center-block" src="~/Content/vap3.jpeg" alt="Vape Product 3" />
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="jumbotron">
+        <h1>Vape Eliquid Wholesale Distributor</h1>
+        <p class="lead">VOS is a Vape E-Liquid wholesale distributor based out of Northern Virginia</p>
+    </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting Started</h2>
+        <h2>Start Shopping</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            We have a wide variety of Eliquid products avalible, from name brands to our own in-house brand Amor De Eliquid.
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary" base href="~/Views/Store/Index.cshtml">Start Shopping &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    
 </div>

@@ -252,6 +252,10 @@
     <Compile Include="Migrations\201611282226275_customizedItem.Designer.cs">
       <DependentUpon>201611282226275_customizedItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611290129065_categoryFix.cs" />
+    <Compile Include="Migrations\201611290129065_categoryFix.Designer.cs">
+      <DependentUpon>201611290129065_categoryFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -277,6 +281,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\card.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\vap1.jpeg" />
+    <Content Include="Content\vap2.jpeg" />
+    <Content Include="Content\vap3.jpeg" />
+    <Content Include="Content\VOS_Logo.png" />
+    <Content Include="Content\VOS_Logo2.png" />
     <Content Include="Content\yeti-bootstrap.min.js.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -423,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611282226275_customizedItem.resx">
       <DependentUpon>201611282226275_customizedItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611290129065_categoryFix.resx">
+      <DependentUpon>201611290129065_categoryFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

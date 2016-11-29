@@ -11,10 +11,10 @@ namespace VOS_Dist_Site.Models
     public class Catagorie
     {
         [Key]
-        [DisplayName("Catagorie ID")]
+        [DisplayName("Category ID")]
         public int ID { get; set; }
 
-        [DisplayName("Catagorie")]
+        [DisplayName("Category")]
         public string Name { get; set; }
 
         public virtual ICollection<Item> Items { get; set; }
