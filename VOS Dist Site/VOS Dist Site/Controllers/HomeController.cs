@@ -19,7 +19,6 @@ namespace VOS_Dist_Site.Controllers
 
             return View();
         }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
