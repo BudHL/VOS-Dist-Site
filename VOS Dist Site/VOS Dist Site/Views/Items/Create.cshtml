@@ -1,4 +1,5 @@
 ﻿@model VOS_Dist_Site.Models.Item
+@using VOS_Dist_Site.Extensions
 
 @{
     ViewBag.Title = "Create New Product";
@@ -6,7 +7,7 @@
 
 <h2>Create New Product</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Items", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -61,6 +62,13 @@
                 @Html.ValidationMessageFor(model => model.ItemPictureUrl, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="editor-label">
+            Upload Image
+        </div>
+        <div class="editor-field">
+            @Html.FileFor(model => model.File)
+            @Html.ValidationMessageFor(model => model.File)
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -73,3 +81,7 @@
 <div>
     @Html.ActionLink("Cancel (Back to List)", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
